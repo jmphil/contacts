@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect}from "react";
+import ContactCard from "./components/contactCard";
+import "./styles.css";
+import "./App.css";
 
-function App() {
+const App = () => {
+  //function
+  const [contacts, setContacts] = useState([]);
+  //useEffect runs fn on every re-render
+  //passing an empty array causes it to run once
+  // this is called a dependency array
+  useEffect(() => {
+    fetch("https://randomuser.me/api/?results=5")
+      .then(response => response.json())
+      .then(data => {
+        setContacts(data.results);
+      });
+  }, []);
+
+
+  // const message = "Error";
+
+  // const handleClick = () => {
+  //   alert("you clicked the message")
+  // }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    //jsx here
+    <>
+    <div className="center">
+      {contacts.map(contact => (
+        <ContactCard
+          avatar={contact.picture.large}
+          name={contact.name.first + " " + contact.name.last}
+          email={contact.email}
+          age={contact.dob.age}
+        />
+      ))}
     </div>
+    </>
   );
 }
 
