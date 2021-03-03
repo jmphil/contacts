@@ -1,7 +1,8 @@
 import React, {useState, useEffect}from "react";
 import ContactCard from "./components/contactCard";
 import "./styles.css";
-import "./App.css";
+// import "./App.css";
+// import Header from '../src/components/layout/Header'
 
 const App = () => {
   //function
@@ -17,7 +18,8 @@ const App = () => {
       });
   }, []);
 
-
+  // const alternatingColor = ['#d5d5d5', '#a9a9a9'];
+  
   // const message = "Error";
 
   // const handleClick = () => {
@@ -28,13 +30,15 @@ const App = () => {
   return (
     //jsx here
     <>
-    <div className="center">
+    {/* <Header /> */}
+    <div >
       {contacts.map(contact => (
         <ContactCard
           avatar={contact.picture.large}
           name={contact.name.first + " " + contact.name.last}
           email={contact.email}
           age={contact.dob.age}
+          phone={contact.phone}
         />
       ))}
     </div>

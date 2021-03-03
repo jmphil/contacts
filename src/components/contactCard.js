@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const ContactCard = (props) => {
 
     const [showAge, setShowAge] = useState(false);
-    const [showEmail, setShowEmail] = useState();
+    // const [showEmail, setShowEmail] = useState();
 
     console.log(props.avatar); 
 	console.log(props.name);
@@ -17,10 +17,9 @@ const ContactCard = (props) => {
             <img src={props.avatar} alt="profile" />
             <div className="user-details">
             <p>Name: {props.name}</p>
-            <button onClick={() => setShowEmail(!showEmail)}>Toggle Email </button>
-            {showEmail && <p>Email: {props.email}</p>}
-            <button onClick={() => setShowAge(!showAge)}>Toggle Age </button>
-            {showAge && <p>Age: {props.age}</p>}
+            <p>Email: {props.email}</p>
+            <p>Phone: {props.phone}</p>
+            <p>Age: {props.age}</p>
             </div>
         </div>
     );
