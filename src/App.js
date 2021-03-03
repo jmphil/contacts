@@ -10,7 +10,7 @@ const App = () => {
   //passing an empty array causes it to run once
   // this is called a dependency array
   useEffect(() => {
-    fetch("https://randomuser.me/api/?results=5")
+    fetch("https://randomuser.me/api/?results=6")
       .then(response => response.json())
       .then(data => {
         setContacts(data.results);
