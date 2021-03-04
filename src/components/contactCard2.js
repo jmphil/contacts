@@ -14,7 +14,7 @@ const ContactCard2 = (props) => {
 
     return (
         <div className="contact-card2">
-            <img src={props.avatar} alt="profile" />
+            <img className="img2" src={props.avatar} alt="profile" />
             <div className="user-details">
             <p>Name: {props.name}</p>
             <p>Email: {props.email}</p>

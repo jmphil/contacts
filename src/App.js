@@ -8,6 +8,7 @@ import ContactCard2 from './components/contactCard2';
 const App = () => {
   //function
   const [contacts, setContacts] = useState([]);
+  const [contacts2, setContacts2] = useState([]);
   const [inHover, setHover] = useState(false);
   //useEffect runs fn on every re-render
   //passing an empty array causes it to run once
@@ -17,6 +18,13 @@ const App = () => {
       .then(response => response.json())
       .then(data => {
         setContacts(data.results);
+      });
+  }, []);
+  useEffect(() => {
+    fetch("https://randomuser.me/api/?results=1")
+      .then(response => response.json())
+      .then(data => {
+        setContacts2(data.results);
       });
   }, []);
 
@@ -38,14 +46,21 @@ const App = () => {
               phone={contact.phone}  
             />
           ))}
-        {inHover && <div className="col right ">
-          <ContactCard />
-        </div>}
-        </div>
-        {/* <div className="col right ">
+          </div>
+        
+        <div className="col right ">
+          {contacts2.map(contacts => (
           <ContactCard2 
+          avatar={contacts.picture.large}
+          name={contacts.name.first + " " + contacts.name.last}
+          email={contacts.email}
+          age={contacts.dob.age}
+          dob={contacts.dob.date}
+          phone={contacts.phone} 
+          location={contacts.location.country}
           />
-        </div> */}
+          ))}
+        </div>
       </div>
     </div>
     </>
