@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const ContactCard = (props) => {
+const ContactCard2 = (props) => {
 
     const [showAge, setShowAge] = useState(false);
     // const [showEmail, setShowEmail] = useState();
@@ -13,17 +13,18 @@ const ContactCard = (props) => {
     
 
     return (
-        <div className="contact-card">
+        <div className="contact-card2">
             <img src={props.avatar} alt="profile" />
             <div className="user-details">
             <p>Name: {props.name}</p>
             <p>Email: {props.email}</p>
             <p>Phone: {props.phone}</p>
+            <p>DOB: {props.dob}</p>
             <p>Age: {props.age}</p>
-            
+            <p>Location: {props.location}</p>
             </div>
         </div>
     );
 };
 
-export default ContactCard
+export default ContactCard2

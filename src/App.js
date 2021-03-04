@@ -1,12 +1,14 @@
 import React, {useState, useEffect}from "react";
 import ContactCard from "./components/contactCard";
 import "./styles.css";
+import ContactCard2 from './components/contactCard2';
 // import "./App.css";
 // import Header from '../src/components/layout/Header'
 
 const App = () => {
   //function
   const [contacts, setContacts] = useState([]);
+  const [inHover, setHover] = useState(false);
   //useEffect runs fn on every re-render
   //passing an empty array causes it to run once
   // this is called a dependency array
@@ -18,29 +20,33 @@ const App = () => {
       });
   }, []);
 
-  // const alternatingColor = ['#d5d5d5', '#a9a9a9'];
-  
-  // const message = "Error";
-
-  // const handleClick = () => {
-  //   alert("you clicked the message")
-  // }
-
-
   return (
     //jsx here
     <>
     {/* <Header /> */}
-    <div >
-      {contacts.map(contact => (
-        <ContactCard
-          avatar={contact.picture.large}
-          name={contact.name.first + " " + contact.name.last}
-          email={contact.email}
-          age={contact.dob.age}
-          phone={contact.phone}
-        />
-      ))}
+    <div className="container">
+      <div className="row">
+        <div className="col right  " >
+          {contacts.map(contact => (
+            <ContactCard  
+              // onMouseEnter={() => setHover(true)}
+              // onMouseLeave={() => setHover(false)}
+              avatar={contact.picture.large}
+              name={contact.name.first + " " + contact.name.last}
+              email={contact.email}
+              age={contact.dob.age}
+              phone={contact.phone}  
+            />
+          ))}
+        {inHover && <div className="col right ">
+          <ContactCard />
+        </div>}
+        </div>
+        {/* <div className="col right ">
+          <ContactCard2 
+          />
+        </div> */}
+      </div>
     </div>
     </>
   );
